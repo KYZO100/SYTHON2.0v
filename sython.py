@@ -406,12 +406,12 @@ async def OwnerStart(event):
                     bott = url.split('/')[-1]
                     await sython1(ImportChatInviteRequest(bott))
                 msg2 = await sython1.get_messages(bot_usernameee, limit=1)
-                await msg2[0].click(1)
+                await msg2[0].click(1')
                 chs += 1
                 await event.edit(f"تم الانضمام في {chs} قناة")
             except:
                 msg2 = await sython1.get_messages(bot_usernameee, limit=1)
-                await msg2[0].click(2)
+                await msg2[0].click(2')
                 chs += 1
                 await event.edit(f"القناة رقم {chs}")
 
@@ -515,8 +515,8 @@ async def OwnerStart(event):
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id:
-        await event.reply("جاري تجميع الهدية")
-        await event.edit("جاري تجميع الهدية")
+        await event.reply("🎁 جاري تجميع الهدية")
+        await event.edit("🎁 جاري تجميع الهدية")
         joinu = await sython1(JoinChannelRequest('saythonh'))
         channel_entity = await sython1.get_entity(bot_username)
         await sython1.send_message(bot_username, '/start')
@@ -527,22 +527,48 @@ async def OwnerStart(event):
         msg1 = await sython1.get_messages(bot_username, limit=1)
         await msg1[0].click(0)
 
-                await sython1.send_message(event.chat_id, f"تم تجميع الهدية | SY")
+        chs = 1
+        for i in range(100):
+            await asyncio.sleep(2)
 
-                
+            list = await sython1(GetHistoryRequest(peer=channel_entity, limit=1,
+                                                    offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+            msgs = list.messages[0]
+            if msgs.message.find(`• لقد حصلت على الهدية مسبقا , انتظر يوم واعد المحاولة !') != -1:
+                await sython1.send_message(event.chat_id, f"لقد حصلت على الهدية اليومية من قبل| SY")
+
+                break
+            url = msgs.reply_markup.rows[0].buttons[0].url
+            try:
+                try:
+                    await sython1(JoinChannelRequest(url))
+                except:
+                    bott = url.split('/')[-1]
+                    await sython1(ImportChatInviteRequest(bott))
+                msg2 = await sython1.get_messages(bot_username, limit=1)
+                await msg2[0].click(text='تحقق')
+                chs += 1
+                await event.edit(f"تم الانضمام في {chs} قناة")
+            except:
+                msg2 = await sython1.get_messages(bot_username, limit=1)
+                await msg2[0].click(text='التالي')
+                chs += 1
+                await event.edit(f"القناة رقم {chs}")
+
+        await sython1.send_message(event.chat_id, "لقد حصلت على نقاط هدية يومية 🎁  | SY")
         
-@sython1.on(events.NewMessage(outgoing=False, pattern='/point2'))
+@sython1.on(events.NewMessage(outgoing=False, pattern='/gift2'))
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id:
-        await event.reply("جاري تجميع النقاط")
-        await event.edit("جاري تجميع النقاط")
+        await event.reply("جاري تجميع الهدية 🎁")
+        await event.edit("جاري تجميع الهدية 🎁")
         joinu = await sython1(JoinChannelRequest('saythonh'))
         channel_entity = await sython1.get_entity(bot_usernamee)
         await sython1.send_message(bot_usernamee, '/start')
         await asyncio.sleep(4)
         msg0 = await sython1.get_messages(bot_usernamee, limit=1)
-        await msg0[0].click(2)
+        await msg0[0].click(6)
         await asyncio.sleep(4)
         msg1 = await sython1.get_messages(bot_usernamee, limit=1)
         await msg1[0].click(0)
@@ -554,8 +580,8 @@ async def OwnerStart(event):
             list = await sython1(GetHistoryRequest(peer=channel_entity, limit=1,
                                                     offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
             msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython1.send_message(event.chat_id, f"تم الانتهاء من التجميع | SY")
+            if msgs.message.find(`• لقد حصلت على الهدية مسبقا , انتظر يوم واعد المحاولة !') != -1:
+                await sython1.send_message(event.chat_id, f"لقد حصلت على الهدية اليومية من قبل| SY")
 
                 break
             url = msgs.reply_markup.rows[0].buttons[0].url
@@ -575,23 +601,23 @@ async def OwnerStart(event):
                 chs += 1
                 await event.edit(f"القناة رقم {chs}")
 
-        await sython1.send_message(event.chat_id, "تم الانتهاء من التجميع | SY")
+        await sython1.send_message(event.chat_id, " لقد حصلت على الهدية مسبقا , انتظر يوم واعد المحاولة !  | SY")
 
-@sython1.on(events.NewMessage(outgoing=False, pattern='/point3'))
+@sython1.on(events.NewMessage(outgoing=False, pattern='/gift3'))
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id:
-        await event.reply("جاري تجميع النقاط")
-        await event.edit("جاري تجميع النقاط")
+        await event.reply("جاري تجميع الهدية 🎁")
+        await event.edit("جاري تجميع الهدية 🎁")
         joinu = await sython1(JoinChannelRequest('saythonh'))
         channel_entity = await sython1.get_entity(bot_usernameee)
         await sython1.send_message(bot_usernameee, '/start')
         await asyncio.sleep(4)
         msg0 = await sython1.get_messages(bot_usernameee, limit=1)
-        await msg0[0].click(2)
+        await msg0[0].click(1)
         await asyncio.sleep(4)
         msg1 = await sython1.get_messages(bot_usernameee, limit=1)
-        await msg1[0].click(1)
+        await msg1[0].click(2)
 
         chs = 1
         for i in range(100):
@@ -600,8 +626,8 @@ async def OwnerStart(event):
             list = await sython1(GetHistoryRequest(peer=channel_entity, limit=1,
                                                     offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
             msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython1.send_message(event.chat_id, f"تم الانتهاء من التجميع | SY")
+            if msgs.message.find(`• لقد حصلت على نقاط هدية يومية 🎁 ') != -1:
+                await sython1.send_message(event.chat_id, f"لقد حصلت على الهدية اليومية من قبل| SY")
 
                 break
             url = msgs.reply_markup.rows[0].buttons[0].url
@@ -612,23 +638,23 @@ async def OwnerStart(event):
                     bott = url.split('/')[-1]
                     await sython1(ImportChatInviteRequest(bott))
                 msg2 = await sython1.get_messages(bot_usernameee, limit=1)
-                await msg2[0].click(1)
+                await msg2[0].click(1')
                 chs += 1
                 await event.edit(f"تم الانضمام في {chs} قناة")
             except:
                 msg2 = await sython1.get_messages(bot_usernameee, limit=1)
-                await msg2[0].click(2)
+                await msg2[0].click(2')
                 chs += 1
                 await event.edit(f"القناة رقم {chs}")
 
-        await sython1.send_message(event.chat_id, "تم الانتهاء من التجميع | SY")
+        await sython1.send_message(event.chat_id, "لقد حصلت على نقاط هدية يومية 🎁  | SY")
 
-@sython1.on(events.NewMessage(outgoing=False, pattern='/point4'))
+@sython1.on(events.NewMessage(outgoing=False, pattern='/gift4'))
 async def OwnerStart(event):
     sender = await event.get_sender()
     if sender.id == ownerhson_id:
-        await event.reply("جاري تجميع النقاط")
-        await event.edit("جاري تجميع النقاط")
+        await event.reply("جاري تجميع الهدية 🎁")
+        await event.edit("جاري تجميع الهدية 🎁")
         joinu = await sython1(JoinChannelRequest('saythonh'))
         channel_entity = await sython1.get_entity(bot_usernameeee)
         await sython1.send_message(bot_usernameeee, '/start')
@@ -637,54 +663,6 @@ async def OwnerStart(event):
         await msg0[0].click(2)
         await asyncio.sleep(4)
         msg1 = await sython1.get_messages(bot_usernameeee, limit=1)
-        await msg1[0].click(1)
-
-        chs = 1
-        for i in range(100):
-            await asyncio.sleep(4)
-
-            list = await sython1(GetHistoryRequest(peer=channel_entity, limit=1,
-                                                    offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
-            msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython1.send_message(event.chat_id, f"تم الانتهاء من التجميع | SY")
-
-                break
-            url = msgs.reply_markup.rows[0].buttons[0].url
-            try:
-                try:
-                    await sython1(JoinChannelRequest(url))
-                except:
-                    bott = url.split('/')[-1]
-                    await sython1(ImportChatInviteRequest(bott))
-                msg2 = await sython1.get_messages(bot_usernameeee, limit=1)
-                await msg2[0].click(1)
-                chs += 1
-                await event.edit(f"تم الانضمام في {chs} قناة")
-            except:
-                msg2 = await sython1.get_messages(bot_usernameeee, limit=1)
-                await msg2[0].click(2)
-                chs += 1
-                await event.edit(f"القناة رقم {chs}")
-
-        await sython1.send_message(event.chat_id, "تم الانتهاء من التجميع | SY")
-
-
-
-@sython1.on(events.NewMessage(outgoing=False, pattern='/point5'))
-async def OwnerStart(event):
-    sender = await event.get_sender()
-    if sender.id == ownerhson_id:
-        await event.reply("جاري تجميع النقاط")
-        await event.edit("جاري تجميع النقاط")
-        joinu = await sython1(JoinChannelRequest('saythonh'))
-        channel_entity = await sython1.get_entity(bot_usernameeeee)
-        await sython1.send_message(bot_usernameeeee, '/start')
-        await asyncio.sleep(4)
-        msg0 = await sython1.get_messages(bot_usernameeeee, limit=1)
-        await msg0[0].click(0)
-        await asyncio.sleep(4)
-        msg1 = await sython1.get_messages(bot_usernameeeee, limit=1)
         await msg1[0].click(0)
 
         chs = 1
@@ -694,8 +672,56 @@ async def OwnerStart(event):
             list = await sython1(GetHistoryRequest(peer=channel_entity, limit=1,
                                                     offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
             msgs = list.messages[0]
-            if msgs.message.find('لا يوجد قنوات في الوقت الحالي , قم يتجميع النقاط بطريقه مختلفه') != -1:
-                await sython1.send_message(event.chat_id, f"تم الانتهاء من التجميع | SY")
+            if msgs.message.find(`• لقد حصلت على الهدية مسبقا , انتظر يوم واعد المحاولة !') != -1:
+                await sython1.send_message(event.chat_id, f"لقد حصلت على الهدية اليومية من قبل| SY")
+
+                break
+            url = msgs.reply_markup.rows[0].buttons[0].url
+            try:
+                try:
+                    await sython1(JoinChannelRequest(url))
+                except:
+                    bott = url.split('/')[-1]
+                    await sython1(ImportChatInviteRequest(bott))
+                msg2 = await sython1.get_messages(bot_usernameeee, limit=1)
+                await msg2[0].click(1)
+                chs += 1
+                await event.edit(f"تم الانضمام في {chs} قناة")
+            except:
+                msg2 = await sython1.get_messages(bot_usernameeee, limit=1)
+                await msg2[0].click(2)
+                chs += 1
+                await event.edit(f"القناة رقم {chs}")
+
+        await sython1.send_message(event.chat_id, "لقد حصلت على نقاط هدية يومية 🎁  | SY")
+
+
+
+@sython1.on(events.NewMessage(outgoing=False, pattern='/gift5'))
+async def OwnerStart(event):
+    sender = await event.get_sender()
+    if sender.id == ownerhson_id:
+        await event.reply("جاري تجميع الهدية 🎁")
+        await event.edit("جاري تجميع الهدية 🎁")
+        joinu = await sython1(JoinChannelRequest('saythonh'))
+        channel_entity = await sython1.get_entity(bot_usernameeeee)
+        await sython1.send_message(bot_usernameeeee, '/start')
+        await asyncio.sleep(4)
+        msg0 = await sython1.get_messages(bot_usernameeeee, limit=1)
+        await msg0[0].click(0)
+        await asyncio.sleep(4)
+        msg1 = await sython1.get_messages(bot_usernameeeee, limit=1)
+        await msg1[0].click(3)
+
+        chs = 1
+        for i in range(100):
+            await asyncio.sleep(4)
+
+            list = await sython1(GetHistoryRequest(peer=channel_entity, limit=1,
+                                                    offset_date=None, offset_id=0, max_id=0, min_id=0, add_offset=0, hash=0))
+            msgs = list.messages[0]
+            if msgs.message.find(`• لقد حصلت على الهدية مسبقا , انتظر يوم واعد المحاولة !') != -1:
+                await sython1.send_message(event.chat_id, f"لقد حصلت على الهدية اليومية من قبل| SY")
 
                 break
             url = msgs.reply_markup.rows[0].buttons[0].url
@@ -714,6 +740,9 @@ async def OwnerStart(event):
                 await msg2[0].click(2)
                 chs += 1
                 await event.edit(f"القناة رقم {chs}")
+
+        await sython1.send_message(event.chat_id, "لقد حصلت على نقاط هدية يومية 🎁  | SY")
+
 
         await sython1.send_message(event.chat_id, "تم الانتهاء من التجميع | SY")
         
@@ -1198,7 +1227,7 @@ async def OwnerStart(event):
         for dialog in dialogs:
             if dialog.is_channel:
                 await sython1(LeaveChannelRequest(dialog.entity))
-                await event.respond(f"**قمت بمغادرة جميع القنوات والمجموعات**")
+                await event.respond(f"")
                 
 
 
