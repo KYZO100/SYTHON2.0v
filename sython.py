@@ -411,7 +411,7 @@ async def OwnerStart(event):
                 await event.edit(f"تم الانضمام في {chs} قناة")
             except:
                 msg2 = await sython1.get_messages(bot_usernameee, limit=1)
-                await msg2[0].click(2')
+                await msg2[0].click(2)
                 chs += 1
                 await event.edit(f"القناة رقم {chs}")
 
@@ -617,7 +617,7 @@ async def OwnerStart(event):
                 await event.edit(f"تم الانضمام في {chs} قناة")
             except:
                 msg2 = await sython1.get_messages(bot_usernameee, limit=1)
-                await msg2[0].click(2')
+                await msg2[0].click(2)
                 chs += 1
                 await event.edit(f"القناة رقم {chs}")
 
